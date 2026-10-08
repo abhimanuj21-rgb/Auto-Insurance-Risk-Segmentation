@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<h2>Policyholders</h2>
+<form class="form" method="post">
+<input name="policy_no" placeholder="Policy No" size="9" required>
+<input name="age" placeholder="Age" size="3" required>
+<select name="vehicle_type"><option>Hatchback</option><option>Sedan</option><option>SUV</option><option>Two-Wheeler</option></select>
+<input name="vehicle_age" placeholder="Vehicle Age" size="7" required>
+<input name="annual_km" placeholder="Annual Km" size="7" required>
+<input name="past_claims" placeholder="Claims" size="4" required>
+<input name="violations" placeholder="Violations" size="6" required>
+<input name="credit_score" placeholder="Credit Score" size="8" required>
+<button class="btn" type="submit">Add</button>
+</form>
+<table><tr><th>Policy No</th><th>Age</th><th>Vehicle</th><th>Veh. Age</th><th>Annual Km</th><th>Claims</th><th>Violations</th><th>Credit</th><th>Risk Score</th><th>Segment</th></tr>
+{% for r in rows %}<tr><td>{{ r.policy_no }}</td><td>{{ r.age }}</td><td>{{ r.vehicle_type }}</td><td>{{ r.vehicle_age }}</td><td>{{ r.annual_km }}</td>
+<td>{{ r.past_claims }}</td><td>{{ r.violations }}</td><td>{{ r.credit_score }}</td><td>{{ r.risk_score }}</td>
+<td>{% if r.segment %}<span class="pill {{ r.segment.split()[0] }}">{{ r.segment }}</span>{% endif %}</td></tr>{% endfor %}
+</table>
+{% endblock %}

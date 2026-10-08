@@ -1,0 +1,7 @@
+services:
+  risk-segmentation:
+    build: .
+    container_name: auto-insurance-risk-segmentation
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

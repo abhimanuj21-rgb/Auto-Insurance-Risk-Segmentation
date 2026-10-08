@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+<h2>Risk Segment Profiles</h2>
+<p class="muted">K-Means clustering (k = 3) on standardized features &middot; Silhouette score: <b>{{ silhouette }}</b></p>
+<table><tr><th>Segment</th><th>Customers</th><th>Avg Age</th><th>Vehicle Age</th><th>Annual Km</th><th>Past Claims</th><th>Violations</th><th>Credit Score</th><th>Risk Score</th><th>Suggested Premium</th></tr>
+{% for s in summary %}<tr><td><span class="pill {{ s.segment.split()[0] }}">{{ s.segment }}</span></td><td>{{ s.customers }}</td><td>{{ s.age }}</td><td>{{ s.vehicle_age }}</td>
+<td>{{ s.annual_km|int }}</td><td>{{ s.past_claims }}</td><td>{{ s.violations }}</td><td>{{ s.credit_score|int }}</td><td><b>{{ s.risk_score }}</b></td>
+<td>&#8377;{{ (base * loading[s.segment])|round|int }}</td></tr>{% endfor %}
+</table>
+<p class="muted" style="margin-top:14px">Premium = base premium &#8377;{{ base }} &times; segment loading (Low 0.85, Medium 1.10, High 1.45)</p>
+{% endblock %}

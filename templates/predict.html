@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block content %}
+<h2>Risk Prediction for New Customer</h2>
+<form method="post"><div class="fgrid">
+{% for f, l, v in [("age","Driver Age",form.get("age","")),("vehicle_age","Vehicle Age (years)",form.get("vehicle_age","")),("annual_km","Annual Distance (km)",form.get("annual_km","")),
+("past_claims","Past Claims",form.get("past_claims","")),("violations","Traffic Violations",form.get("violations","")),("credit_score","Credit Score",form.get("credit_score",""))] %}
+<label>{{ l }}<input name="{{ f }}" value="{{ v }}" required></label>{% endfor %}
+</div><button class="btn" type="submit">Predict Segment</button></form>
+{% if result %}<div class="result" style="margin-top:18px">
+<div class="muted">Predicted Segment</div>
+<div style="font-size:30px;font-weight:700" class="{{ result.segment.split()[0]|lower }}">{{ result.segment }}</div>
+<p>Risk Score: <b>{{ result.score }}</b> / 100 &nbsp;&middot;&nbsp; Suggested Annual Premium: <b>&#8377;{{ result.premium }}</b></p>
+</div>{% endif %}
+{% endblock %}
