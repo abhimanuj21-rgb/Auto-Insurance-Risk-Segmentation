@@ -1,4 +1,4 @@
-# Auto Insurance Risk Segmentation
+# Auto-Insurance-Risk-Segmentation
 
 DevOps & Agile Methodologies (23AD52C) mini project - ABHINAV S P (24243018), AI & DS, National Engineering College.
 
